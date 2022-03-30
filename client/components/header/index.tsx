@@ -160,7 +160,6 @@ export const Header = () => {
         <Modal.Header>
           <Text
             id="modal-title"
-            size={18}
             css={{ fontFamily: "$title", fontSize: 36, color: "$brown" }}
           >
             Login
@@ -175,6 +174,7 @@ export const Header = () => {
             size="lg"
             placeholder="Email"
             css={{ background: "$greenLight" }}
+            animated={false}
           />
           <Input
             clearable
@@ -184,20 +184,31 @@ export const Header = () => {
             size="lg"
             placeholder="Senha"
             css={{ background: "$greenLight" }}
+            animated={false}
           />
           <Row justify="space-between"></Row>
         </Modal.Body>
         <Modal.Footer css={{ fontFamily: "$title" }}>
-          <Button
-            css={{ background: "$greenLight" }}
-            auto
-            onClick={closeHandler}
+          <Container
+            dir="column"
+            display="flex"
+            alignContent="center"
+            justify="center"
           >
-            Fechar
-          </Button>
-          <Button css={{ background: "$green" }} auto onClick={closeHandler}>
-            Entrar
-          </Button>
+            <Text css={{ fontFamily: "$title", fontSize: 14, color: "$brown" }}>
+              Não possui uma conta? Cadastre-se aqui!
+            </Text>
+            <Spacer />
+            <Container dir="row" display="flex" justify="space-evenly">
+              <Button
+                css={{ background: "$green", fontSize: 18 }}
+                auto
+                onClick={closeHandler}
+              >
+                Entrar
+              </Button>
+            </Container>
+          </Container>
         </Modal.Footer>
       </Modal>
     );
@@ -209,7 +220,7 @@ export const Header = () => {
       display="flex"
       justify="center"
       alignContent="center"
-      css={{ background: "$green", minHeight: 160 }}
+      css={{ background: "$green", minHeight: 160, w: "100%" }}
     >
       <Grid.Container alignItems="center" justify="center">
         <Grid xs>
