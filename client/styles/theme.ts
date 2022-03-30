@@ -18,7 +18,7 @@ const theme = createTheme({
     },
     space: {},
     fonts: {
-      title: "Fairplay Display",
+      title: "'Fairplay Display', 'sans-serif';",
       text: "Roboto",
       smallerText: "Roboto",
     },
