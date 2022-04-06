@@ -1,4 +1,4 @@
-import { createTheme, NextUIProvider, Text } from "@nextui-org/react";
+import { createTheme } from "@nextui-org/react";
 
 const theme = createTheme({
   type: "light",
@@ -9,11 +9,12 @@ const theme = createTheme({
       yellow: "#F1C010",
       greenLight: "#A1DA74",
       green: "#448114",
-      brownLight: "#39270C",
-      brown: "#7B633F",
+      brownLight: "#7B633F",
+      brown: "#39270C",
       gradient:
         "linear-gradient(112deg, $blue100 -25%, $pink500 -10%, $purple500 80%)",
-      linkPrimary: "#FFFFFF",
+      textPrimary: "#F4F4F4",
+      textSecondary: "#FFFFFF",
       // ...  more colors
     },
     space: {},

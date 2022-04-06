@@ -35,7 +35,7 @@ const SearchBar = () => {
 const NavBarLink = ({ href, children }: { href: string; children: string }) => (
   <Link
     css={{
-      color: "$linkPrimary",
+      color: "$textSecondary",
       fontFamily: "$title",
       fontWeight: 500,
       fontSize: 24,
@@ -57,7 +57,7 @@ const NavBarButton = ({
 }) => (
   <Button
     css={{
-      color: "$linkPrimary",
+      color: "$textSecondary",
       fontFamily: "$title",
       fontWeight: 500,
       fontSize: 24,
@@ -160,12 +160,12 @@ export const Header = () => {
         <Modal.Header>
           <Text
             id="modal-title"
-            css={{ fontFamily: "$title", fontSize: 36, color: "$brown" }}
+            css={{ fontFamily: "$title", fontSize: 36, color: "$lightBrown" }}
           >
             Login
           </Text>
         </Modal.Header>
-        <Modal.Body css={{ fontFamily: "$title", color: "$brown" }}>
+        <Modal.Body css={{ fontFamily: "$title", color: "$lightBrown" }}>
           <Input
             clearable
             bordered
@@ -173,8 +173,9 @@ export const Header = () => {
             color="primary"
             size="lg"
             placeholder="Email"
-            css={{ background: "$greenLight" }}
+            css={{ background: "$greenLight", border: 0 }}
             animated={false}
+            shadow={false}
           />
           <Input
             clearable
@@ -183,8 +184,9 @@ export const Header = () => {
             color="primary"
             size="lg"
             placeholder="Senha"
-            css={{ background: "$greenLight" }}
+            css={{ background: "$greenLight", border: 0 }}
             animated={false}
+            shadow={false}
           />
           <Row justify="space-between"></Row>
         </Modal.Body>
@@ -195,10 +197,25 @@ export const Header = () => {
             alignContent="center"
             justify="center"
           >
-            <Text css={{ fontFamily: "$title", fontSize: 14, color: "$brown" }}>
-              Não possui uma conta? Cadastre-se aqui!
+            <Text
+              css={{
+                fontFamily: "$title",
+                fontSize: 14,
+                color: "$lightBrown",
+                fontWeight: 700,
+              }}
+            >
+              Esqueci minha senha
             </Text>
-            <Spacer />
+            <Text
+              css={{ fontFamily: "$title", fontSize: 14, color: "$lightBrown" }}
+            >
+              Não possui uma conta?{" "}
+              <Link href="/" style={{ color: "#7B633F", fontWeight: 600 }}>
+                Cadastre-se aqui!
+              </Link>
+            </Text>
+            <Spacer y={3} />
             <Container dir="row" display="flex" justify="space-evenly">
               <Button
                 css={{ background: "$green", fontSize: 18 }}
