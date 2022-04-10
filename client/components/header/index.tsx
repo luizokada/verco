@@ -12,7 +12,6 @@ import {
 import Logo from "../../public/logo-white.svg";
 import Image from "next/image";
 import React, { useState } from "react";
-import handler from "../../pages/api/hello";
 
 const SearchBar = () => {
   return (

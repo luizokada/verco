@@ -1,7 +1,8 @@
 import { Text } from "@nextui-org/react";
+import { NextPage } from "next";
 import { DefaultPageTemplate } from "../../components/default-page-template";
 
-export const PerfilPage = () => {
+export const PerfilPage: NextPage = () => {
   return (
     <DefaultPageTemplate
       tabTitle="Perfil | veg.co"
