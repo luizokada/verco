@@ -31,7 +31,7 @@ function TextDisplay({
   );
 }
 
-export const Footer = ({}) => {
+export const Footer = () => {
   const institucional = [
     "Sobre a loja",
     "Política de entrega",

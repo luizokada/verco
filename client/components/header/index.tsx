@@ -138,7 +138,7 @@ export const Header = () => {
     return (
       <NavBarAnchor
         label="Minha Conta"
-        src="/user.png"
+        src="/profile.png"
         width={36}
         height={38}
         alt="Icone de Usuário"
