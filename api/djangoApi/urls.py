@@ -8,5 +8,5 @@ urlpatterns = [
     path('token', TokenObtainPairView.as_view()),
     path('token/refresh', TokenRefreshView.as_view()),
     path('', include('core.urls')),
-   # path('', include('consumer.urls')),
+    # path('', include('consumer.urls')),
 ]

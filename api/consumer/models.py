@@ -14,7 +14,7 @@ class Consumer(models.Model):
     name = models.CharField(max_length=60)
     email = models.CharField(max_length=60, unique=True)
     cpf = models.CharField(max_length=12, unique=True, default='')
-    address = models.ForeignKey(Address, on_delete = models.CASCADE)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
    # clickedAds = models.ManyToManyField(core.models.Ad)
     password = encrypt(models.CharField(max_length=64))
 
