@@ -9,6 +9,7 @@ const Label = ({ children }: { children: string }) => (
       fontWeight: 700,
       fontSize: 24,
       color: "#A1DA74",
+      textAlign: "center",
     }}
   >
     {children}
@@ -25,25 +26,25 @@ type BarItem = {
 
 const barItems: BarItem[] = [
   {
-    image: "/graph.png",
+    image: "/grafico.png",
     h: 90,
     w: 90,
     label: "Os menores preços do mercado",
     alt: "Icone de Gráfico",
   },
   {
-    image: "/graph.png",
+    image: "/entregas.png",
     h: 90,
     w: 90,
-    label: "Os menores preços do mercado",
-    alt: "Icone de Gráfico",
+    label: "Entregas para todo Brasil",
+    alt: "Icone de Caminhão de Entrega",
   },
   {
-    image: "/graph.png",
+    image: "/produtos.png",
     h: 90,
     w: 90,
-    label: "Os menores preços do mercado",
-    alt: "Icone de Gráfico",
+    label: "Todos os tipos de produtos de melhor qualidade",
+    alt: "Icone de Produtos",
   },
 ];
 
