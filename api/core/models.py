@@ -16,7 +16,7 @@ class Address(models.Model):
     street = models.CharField(max_length=60)
     number = models.CharField(max_length=8)
     complement = models.CharField(max_length=60)
-    ZIP = models.PositiveBigIntegerField(max_length=8)
+    ZIP = models.CharField(max_length=8)
     neighborhood = models.CharField(max_length=60)
 
 
@@ -51,4 +51,3 @@ class Purchase(models.Model):
         CANCELADO = 'CANC', _('Cancelado')
 
     status = models.CharField(max_length=4, choices=PurchaseStatuses.choices, default=PurchaseStatuses.AGUARDANDO_PAGAMENTO)
-
