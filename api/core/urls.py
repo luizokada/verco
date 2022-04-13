@@ -1,10 +1,15 @@
-from django.urls import path
-from core.views import index, aboutUs, showProducts, consumerRegister, companyRegister
+from django.urls import include, path
+from rest_framework import routers
+from . import views
+
+
+router = routers.DefaultRouter()
+router.register(r'products', views.ProductViewSet)
 
 urlpatterns = [
-    path('', index),
-    path('sobre', aboutUs),
-    path('produtos', showProducts),
-    path('cadastro-consumidor', consumerRegister),
-    path('cadastro-empresa', companyRegister),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('sobre', views.aboutUs),
+    path('cadastro-consumidor', views.consumerRegister),
+    path('cadastro-empresa', views.companyRegister),
 ]
