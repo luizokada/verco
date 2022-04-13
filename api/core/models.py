@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django_cryptography.fields import encrypt
+from consumer.models import Consumer
 
 
 class Product(models.Model):
@@ -12,31 +12,8 @@ class Product(models.Model):
         return self.name
 
 
-class Address(models.Model):
-    street = models.CharField(max_length=60)
-    number = models.CharField(max_length=8)
-    complement = models.CharField(max_length=60)
-    ZIP = models.CharField(max_length=8)
-    neighborhood = models.CharField(max_length=60)
-
-
-class Login(models.Model):
-    email = models.CharField(max_length=60, primary_key=True)
-    password = encrypt(models.CharField(max_length=64))
-
-
 class Ad(models.Model):
     product = models.OneToOneField(Product, on_delete = models.CASCADE)
-
-
-class Consumer(models.Model):
-    name = models.CharField(max_length=60)
-    email = models.ForeignKey(Login, on_delete = models.CASCADE)
-    address = models.ForeignKey(Address, on_delete = models.CASCADE)
-    clickedAds = models.ManyToManyField(Ad)
-
-    def __str__(self):
-        return self.name
 
 
 class Purchase(models.Model):
