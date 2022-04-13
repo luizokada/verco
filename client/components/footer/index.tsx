@@ -31,15 +31,32 @@ function TextDisplay({
   );
 }
 
+type FooterText = {
+  title: string;
+  arrayText: string[];
+};
+
+const footerText: FooterText[] = [
+  {
+    title: "Institucional",
+    arrayText: [
+      "Sobre a loja",
+      "Política de entrega",
+      "Política de condições",
+      "Política de privacidade",
+    ]
+  },
+  {
+    title: "Dúvidas",
+    arrayText: ["Fale conosco", "Dúvidas Frequentes"]
+  },
+  {
+    title: "Minha Conta",
+    arrayText: ["Meus pedidos", "Endereço de entrega", "Alterar senha"]
+  },
+];
+
 export const Footer = () => {
-  const institucional = [
-    "Sobre a loja",
-    "Política de entrega",
-    "Política de condições",
-    "Política de privacidade",
-  ];
-  const duvidas = ["Fale conosco", "Dúvidas Frequentes"];
-  const minhaConta = ["Meus pedidos", "Endereço de entrega", "Alterar senha"];
   return (
     <Container
       display="flex"
@@ -50,9 +67,9 @@ export const Footer = () => {
         <Grid xs={4}>
           <GreenLogo />
         </Grid>
-        <TextDisplay title="Institucional" textList={institucional} />
-        <TextDisplay title="Dúvidas" textList={duvidas} />
-        <TextDisplay title="Minha Conta" textList={minhaConta} />
+        {footerText.map(({ title, arrayText }) => (
+          <TextDisplay title = {title} textList = {arrayText}/>
+        ))}
       </Grid.Container>
     </Container>
   );
