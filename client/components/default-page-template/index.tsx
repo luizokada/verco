@@ -3,6 +3,7 @@ import Head from "next/head";
 import { ReactElement } from "react";
 import { Footer } from "../footer";
 import { Header } from "../header";
+import { Carousel } from "../carousel";
 
 type DefaultPageTemplate = {
   tabTitle: string;
@@ -26,6 +27,7 @@ export const DefaultPageTemplate = ({
       <Container as="main" css={{ w: "100%" }}>
         <Header />
         {children}
+        <Carousel />
         <Footer />
       </Container>
     </div>
