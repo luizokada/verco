@@ -28,13 +28,7 @@ function CustomButtom({
   );
 }
 
-function CircleButtom({
-  id,
-  onClick,
-}: {
-  id: number;
-  onClick: (() => void) | undefined;
-}) {
+function CircleButtom({ id, onClick }: { id: number; onClick: Function }) {
   return (
     <Button
       css={{
@@ -45,7 +39,7 @@ function CircleButtom({
           background: "$brown",
         },
       }}
-      onClick={onClick({ id })}
+      onClick={() => onClick({ id })}
       auto
     />
   );
