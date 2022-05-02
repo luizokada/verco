@@ -85,11 +85,12 @@ export const Carousel = () => {
     <Container
       css={{
         display: "flex",
-        flexDirection: "row",
         backgroundColor: "white",
         alignItems: "center",
-        paddingTop: 50,
+        justifyContent: "space-around",
+        marginTop: "120px",
         paddingBottom: 25,
+        width: "60vw",
       }}
     >
       <CustomButtom
