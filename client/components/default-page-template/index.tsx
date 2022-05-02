@@ -4,6 +4,8 @@ import { ReactElement } from "react";
 import { Footer } from "../footer";
 import { Header } from "../header";
 import { Carousel } from "../carousel";
+import { Divider } from "../divider";
+import DisplayItems from "../displayItems";
 
 type DefaultPageTemplate = {
   tabTitle: string;
@@ -28,6 +30,10 @@ export const DefaultPageTemplate = ({
         <Header />
         {children}
         <Carousel />
+        <Divider title="Novidades" />
+        <DisplayItems />
+        <Divider title="Mais Comprados" />
+        <DisplayItems />
         <Footer />
       </Container>
     </div>

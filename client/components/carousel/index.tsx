@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { Grid, Container, Image, Button } from "@nextui-org/react";
-
+import { BiChevronRight, BiChevronLeft } from "react-icons/bi";
 function CustomButtom({
   onClick,
-  text,
+  displayButtonImage,
 }: {
   onClick: (() => void) | undefined;
-  text: String;
+  displayButtonImage: Function;
 }) {
   return (
     <Button
       css={{
         background: "transparent",
         color: "$brown",
+        scale: 1.8,
         fontSize: "$title",
         "&:hover": {
           background: "$brown",
@@ -23,7 +24,7 @@ function CustomButtom({
       light
       onClick={onClick}
     >
-      {text}
+      {displayButtonImage()}
     </Button>
   );
 }
@@ -91,7 +92,10 @@ export const Carousel = () => {
         paddingBottom: 25,
       }}
     >
-      <CustomButtom onClick={handleClickPrev} text="<" />
+      <CustomButtom
+        onClick={handleClickPrev}
+        displayButtonImage={() => <BiChevronLeft />}
+      />
       <Image
         css={{
           maxWidth: "800px",
@@ -100,7 +104,10 @@ export const Carousel = () => {
         alt="Default Image"
         objectFit="cover"
       />
-      <CustomButtom onClick={handleClickNext} text=">" />
+      <CustomButtom
+        onClick={handleClickNext}
+        displayButtonImage={() => <BiChevronRight />}
+      />
       <Container
         css={{
           display: "flex",
