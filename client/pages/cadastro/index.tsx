@@ -1,17 +1,13 @@
 import {Header} from "../../components/header/index"
 import { Input, Container, Button, Grid, Link } from '@nextui-org/react';
 import { HiEye, HiEyeOff} from "react-icons/hi";
-// import Link from 'next/link'
-
 
 function CustomButton({
-    // onClick,
     text,
   }: {
-    // onClick: Function;
     text: String;
   }) {
-    const redirectLink = text == "Continuar" ? "endereco" : ""
+    const redirectLink = text == "Continuar" ? "conta" : ""
     return (
       <Button
         css={{
@@ -25,7 +21,6 @@ function CustomButton({
         }}
         auto
         light
-        // onClick={onClick(text)}
       >
         <Link css={{color:"white"}} href={`/${redirectLink}`}>{text}</Link>
       </Button>
@@ -33,13 +28,6 @@ function CustomButton({
   }
   
 export default function Cadastro(){
-    // const handleClick = ({goTo} : {goTo: String}) => {
-    //     const redirectLink = goTo == "Continuar" ? "endereco" : "home"
-    //     console.log(redirectLink)
-    //     return(
-    //         <Link href={`/${redirectLink}`}/>
-    //     )
-    // }
     return (
         <>
         <Header/>
