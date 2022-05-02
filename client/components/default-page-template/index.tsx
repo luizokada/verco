@@ -6,6 +6,9 @@ import { Header } from "../header";
 import { Carousel } from "../carousel";
 import { Divider } from "../divider";
 import DisplayItems from "../displayItems";
+// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Link from 'next/link'
+
 
 type DefaultPageTemplate = {
   tabTitle: string;
@@ -13,11 +16,11 @@ type DefaultPageTemplate = {
   children: ReactElement;
 };
 
-export const DefaultPageTemplate = ({
+export default function DefaultPageTemplate ({
   tabTitle,
   contentDescription,
   children,
-}: DefaultPageTemplate) => {
+}: DefaultPageTemplate) {
   return (
     <div>
       <Head>
@@ -30,12 +33,15 @@ export const DefaultPageTemplate = ({
         <Header />
         {children}
         <Carousel />
-        <Divider title="Novidades" />
+        <Divider title="Novidades" id="iha"/>
         <DisplayItems />
         <Divider title="Mais Comprados" />
         <DisplayItems />
         <Footer />
       </Container>
+      <Link href="/cadastro">
+      <a href="#iha">Next.js!</a>
+        </Link>
     </div>
   );
 };

@@ -210,7 +210,7 @@ export const Header = () => {
               css={{ fontFamily: "$title", fontSize: 14, color: "$lightBrown" }}
             >
               Não possui uma conta?{" "}
-              <Link href="/" style={{ color: "#7B633F", fontWeight: 600 }}>
+              <Link href="/cadastro" style={{ color: "#7B633F", fontWeight: 600 }}>
                 Cadastre-se aqui!
               </Link>
             </Text>
