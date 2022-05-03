@@ -25,7 +25,7 @@ export default function Parcerias() {
   return (
       <>
       <Header/>
-      <Grid.Container gap={5} justify="center">
+      <Grid.Container gap={5} justify="center" css={{marginTop: "20px", marginBottom: "20px"}}>
         {planos.map((plan) => <PlanCard title={plan.title} about={plan.about} price={plan.price}/>)}
       </Grid.Container>
     <Footer/>
