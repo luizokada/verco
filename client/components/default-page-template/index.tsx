@@ -6,6 +6,7 @@ import { Header } from "../header";
 import { Carousel } from "../carousel";
 import { Divider } from "../divider";
 import DisplayItems from "../displayItems";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 type DefaultPageTemplate = {
   tabTitle: string;
@@ -19,23 +20,31 @@ export const DefaultPageTemplate = ({
   children,
 }: DefaultPageTemplate) => {
   return (
-    <div>
-      <Head>
-        <title>{tabTitle}</title>
-        <meta name="description" content={contentDescription} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <div>
+        <Head>
+          <title>{tabTitle}</title>
+          <meta name="description" content={contentDescription} />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <Container as="main" css={{ w: "100%" }}>
-        <Header />
-        {children}
-        <Carousel />
-        <Divider title="Novidades" />
-        <DisplayItems />
-        <Divider title="Mais Comprados" />
-        <DisplayItems />
-        <Footer />
-      </Container>
-    </div>
+        <Container as="main" css={{ w: "100%" }}>
+          <Header />
+          {children}
+          <Carousel />
+          <Divider title="Novidades" />
+          <DisplayItems />
+          <Divider title="Mais Comprados" />
+          <DisplayItems />
+          <Footer />
+        </Container>
+      </div>
+      {/* <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Header />} />
+          <Route path="cadastro" element={<DisplayItems />} />
+        </Routes>
+      </BrowserRouter> */}
+    </>
   );
 };
