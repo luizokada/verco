@@ -75,7 +75,7 @@ const NavBar = () => {
       <Row justify="space-evenly">
         <NavBarLink href="/">Home</NavBarLink>
         <NavBarLink href="/">Categorias</NavBarLink>
-        <NavBarLink href="/">Sobre nós</NavBarLink>
+        <NavBarLink href="/sobrenos">Sobre nós</NavBarLink>
       </Row>
     </Container>
   );

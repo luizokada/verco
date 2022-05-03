@@ -1,4 +1,5 @@
 import {Header} from "../../components/header/index"
+import {Footer} from "../../components/footer/index"
 import { Input, Container, Button, Grid, Link } from '@nextui-org/react';
 import { HiEye, HiEyeOff} from "react-icons/hi";
 
@@ -62,6 +63,7 @@ export default function Cadastro(){
                 <CustomButton text="Voltar" />
             </Container>
         </Container>
+        <Footer/>
         </>
     );
 }
