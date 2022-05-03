@@ -9,6 +9,9 @@ class Address(models.Model):
     ZIP = models.CharField(max_length=8)
     neighborhood = models.CharField(max_length=60)
 
+    def __str__(self):
+        return self.street
+
 
 class Consumer(models.Model):
     name = models.CharField(max_length=60)
