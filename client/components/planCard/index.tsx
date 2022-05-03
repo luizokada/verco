@@ -27,7 +27,7 @@ export default function PlanCard(props){
                 <Button size="sm" light>
                   Cancel
                 </Button>
-                <CustomButton text="Agree"/>
+                <CustomButton text="Ser Parceiro"/>
               </Row>
             </Card.Footer>
           </Card>

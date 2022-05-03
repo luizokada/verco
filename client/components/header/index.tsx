@@ -92,7 +92,7 @@ const NavBar = () => {
         value={value}
         onChange={handleChange}
       />
-        <NavBarLink href="/sobrenos">Sobre nós</NavBarLink>
+        <NavBarLink href="/sobrenos">Sobre Nós</NavBarLink>
         <NavBarLink href="/parcerias">Parcerias</NavBarLink>
       </Row>
     </Container>

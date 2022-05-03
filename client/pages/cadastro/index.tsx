@@ -27,14 +27,6 @@ function CustomButton({ text }: { text: String }) {
   );
 }
 
-const InputMasked = (props) => {
-  return(
-    <InputMask mask="99/99/9999" value={props.value} >
-    {(inputProps) => <Input {...inputProps} type="tel" disableUnderline />}
-  </InputMask>
-  )
-}
-
 export default function Cadastro() {
   return (
     <>
@@ -59,7 +51,7 @@ export default function Cadastro() {
           }}
         >
           <Grid>
-            <InputMasked value/>
+            <Input  labelPlaceholder="Nome Completo" width="360px" />
           </Grid>
           <Grid>
             <Input labelPlaceholder="E-mail" width="360px" />
