@@ -2,6 +2,7 @@ import { Header } from "../../components/header/index";
 import { Footer } from "../../components/footer/index";
 import { Input, Container, Button, Grid, Link } from "@nextui-org/react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import InputMask from 'react-input-mask';
 
 function CustomButton({ text }: { text: String }) {
   const redirectLink = text == "Continuar" ? "conta" : "";
@@ -24,6 +25,14 @@ function CustomButton({ text }: { text: String }) {
       </Link>
     </Button>
   );
+}
+
+const InputMasked = (props) => {
+  return(
+    <InputMask mask="99/99/9999" value={props.value} >
+    {(inputProps) => <Input {...inputProps} type="tel" disableUnderline />}
+  </InputMask>
+  )
 }
 
 export default function Cadastro() {
@@ -50,7 +59,7 @@ export default function Cadastro() {
           }}
         >
           <Grid>
-            <Input labelPlaceholder="Nome Completo" width="360px" />
+            <InputMasked value/>
           </Grid>
           <Grid>
             <Input labelPlaceholder="E-mail" width="360px" />
