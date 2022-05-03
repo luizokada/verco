@@ -1,6 +1,6 @@
 import { Text } from "@nextui-org/react";
 import { NextPage } from "next";
-import { DefaultPageTemplate } from "../../components/default-page-template";
+import DefaultPageTemplate from "../../components/default-page-template";
 
 export const PerfilPage: NextPage = () => {
   return (

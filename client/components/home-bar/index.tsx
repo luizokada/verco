@@ -10,6 +10,7 @@ const Label = ({ children }: { children: string }) => (
       fontSize: 24,
       color: "#A1DA74",
       textAlign: "center",
+      width: "200px",
     }}
   >
     {children}

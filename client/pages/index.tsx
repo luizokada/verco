@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { HomeBar } from "../components/home-bar";
-import { DefaultPageTemplate } from "../components/default-page-template";
+import  DefaultPageTemplate  from "../components/default-page-template";
 
-const Home: NextPage = () => {
+function Home() {
   return (
     <DefaultPageTemplate
       tabTitle="Início | veg.co"
@@ -11,6 +11,6 @@ const Home: NextPage = () => {
       <HomeBar />
     </DefaultPageTemplate>
   );
-};
+}
 
 export default Home;
