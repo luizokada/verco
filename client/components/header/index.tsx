@@ -12,6 +12,7 @@ import {
 import Logo from "../../public/logo-white.svg";
 import Image from "next/image";
 import React, { useState } from "react";
+import Dropdown from "../../components/dropdown/index"
 
 const SearchBar = () => {
   return (
@@ -70,11 +71,27 @@ const NavBarButton = ({
 );
 
 const NavBar = () => {
+  const options = [
+    { label: 'Fruit', value: 'fruit' },
+    { label: 'Vegetable', value: 'vegetable' },
+    { label: 'Meat', value: 'meat' },
+  ];
+
+  const [value, setValue] = useState('fruit');
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
   return (
     <Container>
       <Row justify="space-evenly">
         <NavBarLink href="/">Home</NavBarLink>
-        <NavBarLink href="/">Categorias</NavBarLink>
+        <Dropdown
+        label="Categorias"
+        options={options}
+        value={value}
+        onChange={handleChange}
+      />
         <NavBarLink href="/sobrenos">Sobre nós</NavBarLink>
       </Row>
     </Container>
@@ -250,9 +267,6 @@ export const Header = () => {
         <Grid xs>
           <MyAccountButton />
           <LoginModal />
-        </Grid>
-        <Grid xs>
-          <OrderButton />
         </Grid>
       </Grid.Container>
     </Container>

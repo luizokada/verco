@@ -14,6 +14,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en" style={{margin: 0, padding: 0}}>
         <Head>
+         <link rel="shortcut icon" href="/static/favicon.ico" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link

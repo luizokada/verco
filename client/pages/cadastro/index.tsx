@@ -56,6 +56,18 @@ export default function Cadastro() {
             <Input labelPlaceholder="E-mail" width="360px" />
           </Grid>
           <Grid>
+            <Input
+              labelPlaceholder="Nome de usuário"
+              width="360px"
+            />
+          </Grid>
+          <Grid>
+            <Input
+              labelPlaceholder="CPF"
+              width="360px"
+            />
+          </Grid>
+          <Grid>
             <Input.Password
               labelPlaceholder="Senha"
               width="360px"

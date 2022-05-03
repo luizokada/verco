@@ -90,8 +90,7 @@ export const Carousel = () => {
         justifyContent: "space-around",
         marginTop: "120px",
         paddingBottom: 25,
-        minWidth: "60vw",
-        maxWidth: "70vw",
+        maxWidth: "80vw",
       }}
     >
       <CustomButtom
