@@ -1,9 +1,15 @@
 import { Grid, Container, Image, Button } from "@nextui-org/react";
 import star from "../../public/star.png";
+import Link from "next/link";
 import emptyStar from "../../public/empty_star.png";
 export default function ItemCard(props) {
-  const { img, starNum, title, price } = props;
+  const { img, starNum, title, price, id } = props;
   const starsDisplay = [];
+
+  const handleClick = (itemId) => {
+    return <Link href={{ pathname: "/produto", query: { keyword: itemId } }} />;
+  };
+
   let contStar = starNum;
   for (let i = 0; i <= 4; i++) {
     if (contStar != 0) {
@@ -14,37 +20,39 @@ export default function ItemCard(props) {
     }
   }
   return (
-    <Container
-      css={{
-        width: "280px",
-        h: "400px",
-        borderRadius: "25px",
-        boxShadow: "5px 5px 20px #ccc",
-        position: "relative",
-        cursor: "pointer",
-      }}
-    >
-      <Image css={{ marginTop: "8px" }} w="280px" h="280px" src={img.src} />
-
-      <p>{title}</p>
+    <Link href={{ pathname: "/produto", query: { id }, asPath: "/produto" }}>
       <Container
         css={{
-          display: "flex",
-          justifyContent: "center",
+          width: "280px",
+          h: "400px",
+          borderRadius: "25px",
+          boxShadow: "5px 5px 20px #ccc",
+          position: "relative",
+          cursor: "pointer",
         }}
       >
-        {starsDisplay.map((star) => (
-          <Image src={star} />
-        ))}
-        <h3
-          style={{
-            fontWeight: 900,
-            paddingTop: " 8px",
+        <Image css={{ marginTop: "8px" }} w="280px" h="280px" src={img.src} />
+
+        <p>{title}</p>
+        <Container
+          css={{
+            display: "flex",
+            justifyContent: "center",
           }}
         >
-          R$ {price}
-        </h3>
+          {starsDisplay.map((star) => (
+            <Image src={star} />
+          ))}
+          <h3
+            style={{
+              fontWeight: 900,
+              paddingTop: " 8px",
+            }}
+          >
+            R$ {price}
+          </h3>
+        </Container>
       </Container>
-    </Container>
+    </Link>
   );
 }

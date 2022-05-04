@@ -12,7 +12,7 @@ import {
 import Logo from "../../public/logo-white.svg";
 import Image from "next/image";
 import React, { useState } from "react";
-import Dropdown from "../../components/dropdown/index"
+import Dropdown from "../../components/dropdown/index";
 
 const SearchBar = () => {
   return (
@@ -72,12 +72,12 @@ const NavBarButton = ({
 
 const NavBar = () => {
   const options = [
-    { label: 'Fruit', value: 'fruit' },
-    { label: 'Vegetable', value: 'vegetable' },
-    { label: 'Meat', value: 'meat' },
+    { label: "Comida", value: "Comida" },
+    { label: "Moda", value: "Moda" },
+    { label: "Beleza", value: "Beleza" },
   ];
 
-  const [value, setValue] = useState('fruit');
+  const [value, setValue] = useState("Comida");
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -87,11 +87,11 @@ const NavBar = () => {
       <Row justify="space-evenly">
         <NavBarLink href="/">Home</NavBarLink>
         <Dropdown
-        label="Categorias"
-        options={options}
-        value={value}
-        onChange={handleChange}
-      />
+          label="Categorias"
+          options={options}
+          value={value}
+          onChange={handleChange}
+        />
         <NavBarLink href="/sobrenos">Sobre Nós</NavBarLink>
         <NavBarLink href="/parcerias">Parcerias</NavBarLink>
       </Row>
@@ -228,7 +228,10 @@ export const Header = () => {
               css={{ fontFamily: "$title", fontSize: 14, color: "$lightBrown" }}
             >
               Não possui uma conta?{" "}
-              <Link href="/cadastro" style={{ color: "#7B633F", fontWeight: 600 }}>
+              <Link
+                href="/cadastro"
+                style={{ color: "#7B633F", fontWeight: 600 }}
+              >
                 Cadastre-se aqui!
               </Link>
             </Text>
