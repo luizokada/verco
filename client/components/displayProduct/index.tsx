@@ -14,7 +14,8 @@ export default function DisplayProduct(props) {
         flexDirection: "row",
         maxHeight: "400px",
         maxWidth: "1400px",
-        marginTop: "64px",
+        marginTop: "128px",
+        marginBottom: "128px",
         position: "relative",
       }}
     >

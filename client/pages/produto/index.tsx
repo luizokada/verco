@@ -4,13 +4,23 @@ import manteiga from "../../public/manteiga.png";
 import amendoim from "../../public/amendoim.png";
 import queijo from "../../public/queijo.png";
 import DisplayProduct from "../../components/displayProduct/index";
+import { Grid, Container } from "@nextui-org/react";
 import { useRouter } from "next/router";
+import Bar from "../../components/categoryBar/index";
 
 function displayNumberOfItems(quantity, item) {
+  const lojas = [
+    "Loja Super Veganos",
+    "EcoVida",
+    "Veganismo.com",
+    "Save The Planet",
+    "Planeta Feliz",
+    "Comidinhas da Terra",
+  ];
   const totalItems = [];
   for (let i = 0; i <= quantity; i++) {
     let randomStarNum = Math.floor(Math.random() * 6);
-    const newItem = { ...item, starNum: randomStarNum };
+    const newItem = { ...item, starNum: randomStarNum, store: lojas[i] };
     totalItems.push(newItem);
   }
 
@@ -54,16 +64,21 @@ export default function Produto() {
   return (
     <>
       <Header />
-      {finalItems.map((product, index) => (
-        <DisplayProduct
-          img={product.img}
-          title={product.title}
-          about={product.text}
-          store={product.store}
-          price={product.price + index * 1.5}
-          starNum={product.starNum}
-        />
-      ))}
+      <Container css={{ position: "relative" }}>
+        {/* <Container css={{ position: "absolute", left: 0 }}>
+          <Bar />
+        </Container> */}
+        {finalItems.map((product, index) => (
+          <DisplayProduct
+            img={product.img}
+            title={product.title}
+            about={product.text}
+            store={product.store}
+            price={product.price + index * 1.5}
+            starNum={product.starNum}
+          />
+        ))}
+      </Container>
       <Footer />
     </>
   );
