@@ -3,7 +3,7 @@ import manteiga from "../../public/manteiga.png";
 import amendoim from "../../public/amendoim.png";
 import queijo from "../../public/queijo.png";
 
-import { Grid, Container, Image, Button } from "@nextui-org/react";
+import { Container } from "@nextui-org/react";
 
 export default function displayItems() {
   const items = [
@@ -30,12 +30,13 @@ export default function displayItems() {
     <Container
       css={{ display: "flex", marginTop: "32px", marginBottom: "32px" }}
     >
-      {items.map((item) => (
+      {items.map((item, index) => (
         <ItemCard
           img={item.img}
           title={item.title}
           starNum={item.starNum}
           price={item.price}
+          key={index}
         />
       ))}
     </Container>

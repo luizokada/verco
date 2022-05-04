@@ -11,8 +11,10 @@ import {
 } from "@nextui-org/react";
 import Logo from "../../public/logo-white.svg";
 import Image from "next/image";
-import React, { useState } from "react";
-import Dropdown from "../../components/dropdown/index"
+import React, { FormEvent, useCallback, useState } from "react";
+import Dropdown from "../../components/dropdown/index";
+import { useAuth } from "../../hooks/useAuth";
+import { useSession } from "next-auth/react";
 
 const SearchBar = () => {
   return (
@@ -72,26 +74,15 @@ const NavBarButton = ({
 
 const NavBar = () => {
   const options = [
-    { label: 'Fruit', value: 'fruit' },
-    { label: 'Vegetable', value: 'vegetable' },
-    { label: 'Meat', value: 'meat' },
+    { label: "Fruit", value: "fruit" },
+    { label: "Vegetable", value: "vegetable" },
+    { label: "Meat", value: "meat" },
   ];
 
-  const [value, setValue] = useState('fruit');
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
   return (
     <Container>
       <Row justify="space-evenly">
         <NavBarLink href="/">Home</NavBarLink>
-        <Dropdown
-        label="Categorias"
-        options={options}
-        value={value}
-        onChange={handleChange}
-      />
         <NavBarLink href="/sobrenos">Sobre Nós</NavBarLink>
         <NavBarLink href="/parcerias">Parcerias</NavBarLink>
       </Row>
@@ -131,26 +122,40 @@ const NavBarAnchor = ({
   </Container>
 );
 
-const OrderButton = () => {
-  return (
-    <NavBarAnchor
-      label="Carrinho"
-      href="/"
-      src="/bag.png"
-      width={40}
-      height={42}
-      alt="Icone de Carrinho"
-    />
-  );
-};
-
 export const Header = () => {
-  const [visible, setVisible] = useState(false);
-  const handler = () => setVisible(true);
+  const [modalLoginVisible, setModalLoginVisible] = useState(false);
+  const { handleLogin, handleLogout } = useAuth();
+  const { data: session, status } = useSession();
+  const loading = status === "loading";
 
-  const closeHandler = () => {
-    setVisible(false);
-  };
+  const handleAuth = useCallback(() => {
+    if (!session) {
+      setModalLoginVisible(true);
+    } else {
+      window.alert("Redirecionando para pagina de usuario");
+    }
+  }, [session]);
+
+  const closeHandler = useCallback(() => {
+    setModalLoginVisible(false);
+  }, []);
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      if (
+        e.currentTarget.username.value != "" &&
+        e.currentTarget.password.value != ""
+      ) {
+        const username = e.currentTarget.username.value;
+        const password = e.currentTarget.password.value;
+
+        handleLogin({ username, password, callbackSuccess: closeHandler });
+      }
+    },
+    [closeHandler, handleLogin]
+  );
 
   const MyAccountButton = () => {
     return (
@@ -161,17 +166,21 @@ export const Header = () => {
         height={38}
         alt="Icone de Usuário"
         button
-        onClick={handler}
+        onClick={handleAuth}
       />
     );
   };
 
-  const LoginModal = () => {
+  const LogoutButton = () => {
+    return <NavBarButton label="Sair" onClick={handleLogout} />;
+  };
+
+  const LoginModal = useCallback(() => {
     return (
       <Modal
         closeButton
         aria-labelledby="modal-title"
-        open={visible}
+        open={modalLoginVisible}
         onClose={closeHandler}
       >
         <Modal.Header>
@@ -182,71 +191,88 @@ export const Header = () => {
             Login
           </Text>
         </Modal.Header>
-        <Modal.Body css={{ fontFamily: "$title", color: "$lightBrown" }}>
-          <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="Email"
-            css={{ background: "$greenLight", border: 0 }}
-            animated={false}
-            shadow={false}
-          />
-          <Input
-            clearable
-            bordered
-            fullWidth
-            color="primary"
-            size="lg"
-            placeholder="Senha"
-            css={{ background: "$greenLight", border: 0 }}
-            animated={false}
-            shadow={false}
-          />
-          <Row justify="space-between"></Row>
-        </Modal.Body>
-        <Modal.Footer css={{ fontFamily: "$title" }}>
-          <Container
-            dir="column"
-            display="flex"
-            alignContent="center"
-            justify="center"
-          >
-            <Text
-              css={{
-                fontFamily: "$title",
-                fontSize: 14,
-                color: "$lightBrown",
-                fontWeight: 700,
-              }}
+        <form action="" onSubmit={handleSubmit}>
+          <Modal.Body css={{ fontFamily: "$title", color: "$lightBrown" }}>
+            <Input
+              clearable
+              bordered
+              fullWidth
+              color="primary"
+              size="lg"
+              name="username"
+              placeholder="Nome de usuário"
+              css={{ background: "$greenLight", border: 0 }}
+              animated={false}
+              shadow={false}
+              initialValue=""
+              required
+            />
+            <Input.Password
+              clearable
+              bordered
+              fullWidth
+              color="primary"
+              size="lg"
+              name="password"
+              placeholder="Senha"
+              css={{ background: "$greenLight", border: 0 }}
+              animated={false}
+              shadow={false}
+              initialValue=""
+              required
+            />
+            <Row justify="space-between"></Row>
+          </Modal.Body>
+          <Modal.Footer css={{ fontFamily: "$title" }}>
+            <Container
+              dir="column"
+              display="flex"
+              alignContent="center"
+              justify="center"
             >
-              Esqueci minha senha
-            </Text>
-            <Text
-              css={{ fontFamily: "$title", fontSize: 14, color: "$lightBrown" }}
-            >
-              Não possui uma conta?{" "}
-              <Link href="/cadastro" style={{ color: "#7B633F", fontWeight: 600 }}>
-                Cadastre-se aqui!
-              </Link>
-            </Text>
-            <Spacer y={3} />
-            <Container dir="row" display="flex" justify="space-evenly">
-              <Button
-                css={{ background: "$green", fontSize: 18 }}
-                auto
-                onClick={closeHandler}
+              <Text
+                css={{
+                  fontFamily: "$title",
+                  fontSize: 14,
+                  color: "$lightBrown",
+                  fontWeight: 700,
+                }}
               >
-                Entrar
-              </Button>
+                Esqueci minha senha
+              </Text>
+              <Text
+                css={{
+                  fontFamily: "$title",
+                  fontSize: 14,
+                  color: "$lightBrown",
+                }}
+              >
+                Não possui uma conta?{" "}
+                <Link
+                  href="/cadastro"
+                  style={{ color: "#7B633F", fontWeight: 600 }}
+                >
+                  <a>Cadastre-se aqui!</a>
+                </Link>
+              </Text>
+              <Spacer y={3} />
+              <Container dir="row" display="flex" justify="space-evenly">
+                <Button
+                  css={{ background: "$green", fontSize: 18 }}
+                  auto
+                  type="submit"
+                >
+                  Entrar
+                </Button>
+              </Container>
             </Container>
-          </Container>
-        </Modal.Footer>
+          </Modal.Footer>
+        </form>
       </Modal>
     );
-  };
+  }, [modalLoginVisible, closeHandler, handleSubmit]);
+
+  if (typeof window !== "undefined" && loading) return null;
 
   return (
     <Container
@@ -267,6 +293,7 @@ export const Header = () => {
         </Grid>
         <Grid xs>
           <MyAccountButton />
+          {session ? <LogoutButton /> : <></>}
           <LoginModal />
         </Grid>
       </Grid.Container>

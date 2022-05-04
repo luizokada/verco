@@ -44,15 +44,15 @@ const footerText: FooterText[] = [
       "Política de entrega",
       "Política de condições",
       "Política de privacidade",
-    ]
+    ],
   },
   {
     title: "Dúvidas",
-    arrayText: ["Fale conosco", "Dúvidas Frequentes"]
+    arrayText: ["Fale conosco", "Dúvidas Frequentes"],
   },
   {
     title: "Minha Conta",
-    arrayText: ["Meus pedidos", "Endereço de entrega", "Alterar senha"]
+    arrayText: ["Meus pedidos", "Endereço de entrega", "Alterar senha"],
   },
 ];
 
@@ -67,8 +67,8 @@ export const Footer = () => {
         <Grid xs={4}>
           <GreenLogo />
         </Grid>
-        {footerText.map(({ title, arrayText }) => (
-          <TextDisplay title = {title} textList = {arrayText}/>
+        {footerText.map(({ title, arrayText }, index) => (
+          <TextDisplay title={title} textList={arrayText} key={index} />
         ))}
       </Grid.Container>
     </Container>

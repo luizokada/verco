@@ -59,19 +59,9 @@ class User(AbstractUser, PermissionsMixin):
     plan = models.CharField(max_length=4, choices=Plans.choices, default=Plans.CONSUMIDOR)
 
     USERNAME_FIELD = 'username'
-    REQUIRED_FIELDS = ['email']
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 
     def __str__(self):
         return self.name
-
-# class Address(models.Model):
-#     street = models.CharField(max_length=60)
-#     number = models.CharField(max_length=8)
-#     complement = models.CharField(max_length=60)
-#     ZIP = models.CharField(max_length=8)
-#     neighborhood = models.CharField(max_length=60)
-#
-#     def __str__(self):
-#         return self.street

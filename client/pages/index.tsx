@@ -1,6 +1,8 @@
-import type { NextPage } from "next";
 import { HomeBar } from "../components/home-bar";
-import  DefaultPageTemplate  from "../components/default-page-template";
+import DefaultPageTemplate from "../components/default-page-template";
+import { Carousel } from "../components/carousel";
+import { Divider } from "../components/divider";
+import DisplayItems from "../components/displayItems";
 
 function Home() {
   return (
@@ -8,7 +10,14 @@ function Home() {
       tabTitle="Início | veg.co"
       contentDescription="Produtos veganos ao melhor preço!"
     >
-      <HomeBar />
+      <div>
+        <HomeBar />
+        <Carousel />
+        <Divider title="Novidades" id="iha" />
+        <DisplayItems />
+        <Divider title="Mais Comprados" />
+        <DisplayItems />
+      </div>
     </DefaultPageTemplate>
   );
 }
