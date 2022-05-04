@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import rest_framework.permissions
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,10 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
+    'userapp',
     'core',
-    'consumer'
+    'consumer',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -111,7 +120,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    )
+    ),
+    'USER_DETAILS_SERIALIZER': 'userapp.serializer.UserDetailsSerializer'
 }
 
 
@@ -134,5 +144,8 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+
+AUTH_USER_MODEL = 'userapp.User'
+ACCOUNT_EMAIL_REQUIRED = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
