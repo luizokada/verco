@@ -2,13 +2,10 @@
 
 Site desenvolvido para fazer um comparativos de preços de produtos veganos que são vendidos em diversos lugares.
 
-Executar o client em modo de desenvolvimento:
-`yarn`
+Executar o client:
+`yarn` e
 `yarn dev`
 
-Executar a build do client:
-`yarn start`
-
 Para executar a api:
-`pip install -r requirements.txt`
+`pip install -r requirements.txt`e
 `python manage.py runserver`
