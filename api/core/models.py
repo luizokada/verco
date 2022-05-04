@@ -5,8 +5,9 @@ from consumer.models import Consumer
 
 class Product(models.Model):
     name = models.CharField(max_length=60)
-    value = models.DecimalField(decimal_places=2, max_digits=9)
-    slug = models.CharField(max_length=30)
+    brand = models.CharField(max_length=60, default="")
+    price = models.DecimalField(decimal_places=2, max_digits=9)
+    idInCompany = models.CharField(max_length=60, default="")
 
     def __str__(self):
         return self.name
@@ -18,6 +19,8 @@ class Ad(models.Model):
     def __str__(self):
         return "Anúncio: " + self.product.__str__()
 
+
+# FUNCIONALIDADE DE MOSTRAR SUAS COMPRAS AINDA NAO SERÁ IMPLEMENTADA, DEVIDO A MAIOR COMPLEXIDADE
 
 class Purchase(models.Model):
     product = models.ManyToManyField(Product)

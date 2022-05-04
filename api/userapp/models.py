@@ -42,7 +42,7 @@ class User(AbstractUser, PermissionsMixin):
     name = models.CharField(max_length=60)
     username = models.CharField(max_length=15, unique=True)
     email = models.CharField(max_length=60, unique=True)
-    cpf = models.CharField(max_length=12, unique=True, default='')
+    cpf = models.CharField(max_length=12, default='')
     password = encrypt(models.CharField(max_length=64))
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)

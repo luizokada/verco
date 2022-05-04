@@ -43,8 +43,8 @@ const barItems: BarItem[] = [
   {
     image: "/produtos.png",
     h: 90,
-    w: 90,
-    label: "Todos os tipos de produtos de melhor qualidade",
+    w: 80,
+    label: "Produtos da melhor qualidade",
     alt: "Icone de Produtos",
   },
 ];

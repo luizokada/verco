@@ -16,13 +16,14 @@ function TextDisplay({
       <Text css={{ fontSize: 24, color: "$textPrimary", fontFamily: "$title" }}>
         {title}
       </Text>
-      {textList.map((text) => (
+      {textList.map((text, index) => (
         <Text
           css={{
             fontSize: 14,
             color: "$textSecondary",
             fontFamily: "$text",
           }}
+          key={index}
         >
           {text}
         </Text>
@@ -52,7 +53,7 @@ const footerText: FooterText[] = [
   },
   {
     title: "Minha Conta",
-    arrayText: ["Meus pedidos", "Endereço de entrega", "Alterar senha"],
+    arrayText: ["Alterar senha"],
   },
 ];
 
@@ -61,7 +62,11 @@ export const Footer = () => {
     <Container
       display="flex"
       alignContent="flex-end"
-      css={{ background: "$brown", color: "$textSecondary", padding: "30px" }}
+      css={{
+        background: "$brown",
+        color: "$textSecondary",
+        padding: "30px",
+      }}
     >
       <Grid.Container gap={1} justify="center">
         <Grid xs={4}>

@@ -1,11 +1,9 @@
-import { Header } from "../../components/header/index";
-import { Footer } from "../../components/footer/index";
-import { Container, Grid, Link, Text } from "@nextui-org/react";
+import { Container, Text } from "@nextui-org/react";
+import DefaultPageTemplate from "../../components/default-page-template";
 
 export default function SobreNos() {
   return (
-    <>
-      <Header />
+    <DefaultPageTemplate tabTitle="Sobre nós" contentDescription="Sobre nós">
       <Container
         css={{
           display: "flex",
@@ -58,7 +56,6 @@ export default function SobreNos() {
           </Text>
         </Container>
       </Container>
-      <Footer />
-    </>
+    </DefaultPageTemplate>
   );
 }

@@ -13,7 +13,7 @@ export const useAuth = () => {
   }: {
     username: string;
     password: string;
-    callbackSuccess: () => any;
+    callbackSuccess?: () => any;
   }) => {
     signIn("credentials", {
       username,
@@ -22,7 +22,7 @@ export const useAuth = () => {
       redirect: false,
     }).then((res) =>
       res.status == "200"
-        ? callbackSuccess()
+        ? callbackSuccess && callbackSuccess()
         : window.alert("Credenciais invalidas")
     );
   };
@@ -32,5 +32,38 @@ export const useAuth = () => {
     api.post("/dj-rest-auth/logout/");
   };
 
-  return { handleLogin, handleLogout };
+  const handleRegister = async ({
+    name,
+    username,
+    cpf,
+    password,
+    email,
+    confirmPassword,
+    callbackSuccess,
+  }: {
+    name: string;
+    username: string;
+    password: string;
+    email: string;
+    cpf: string;
+    confirmPassword: string;
+    callbackSuccess?: () => any;
+  }) => {
+    const response = await api
+      .post("dj-rest-auth/registration/", {
+        username,
+        name,
+        cpf,
+        email,
+        password1: password,
+        password2: confirmPassword,
+      })
+      .then((res) => callbackSuccess && callbackSuccess())
+      .catch((error) => window.alert("Erro no cadastro"));
+
+    if (!response) return null;
+    return response;
+  };
+
+  return { handleLogin, handleLogout, handleRegister };
 };

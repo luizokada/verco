@@ -11,10 +11,10 @@ import {
 } from "@nextui-org/react";
 import Logo from "../../public/logo-white.svg";
 import Image from "next/image";
-import React, { FormEvent, useCallback, useState } from "react";
-import Dropdown from "../../components/dropdown/index";
+import React, { useCallback, useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useSession } from "next-auth/react";
+import Dropdown from "../../components/dropdown/index";
 
 const SearchBar = () => {
   return (
@@ -28,6 +28,11 @@ const SearchBar = () => {
             fontWeight: 600,
             background: "$greenLight",
           }}
+          onClick={() =>
+            window.alert(
+              "Recurso temporariamente indisponível. Agradecemos a compreensão!"
+            )
+          }
         />
       </Row>
     </Container>
@@ -74,11 +79,16 @@ const NavBarButton = ({
 
 const NavBar = () => {
   const options = [
-    { label: "Fruit", value: "fruit" },
-    { label: "Vegetable", value: "vegetable" },
-    { label: "Meat", value: "meat" },
+    { label: "Comida", value: "Comida" },
+    { label: "Moda", value: "Moda" },
+    { label: "Beleza", value: "Beleza" },
   ];
 
+  const [value, setValue] = useState("Comida");
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
   return (
     <Container>
       <Row justify="space-evenly">
@@ -201,7 +211,7 @@ export const Header = () => {
               size="lg"
               name="username"
               placeholder="Nome de usuário"
-              css={{ background: "$greenLight", border: 0 }}
+              css={{ border: 0 }}
               animated={false}
               shadow={false}
               initialValue=""
@@ -215,7 +225,7 @@ export const Header = () => {
               size="lg"
               name="password"
               placeholder="Senha"
-              css={{ background: "$greenLight", border: 0 }}
+              css={{ border: 0 }}
               animated={false}
               shadow={false}
               initialValue=""
@@ -276,7 +286,6 @@ export const Header = () => {
 
   return (
     <Container
-      fluid
       display="flex"
       justify="center"
       alignContent="center"

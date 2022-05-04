@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .models import Consumer
 
+# O MODULE DE CONSUMER FOI DESCONTINUADO, AGORA SEGUIMOS COM O MODULE USERAPP, QUE SEGUE O PADRAO REST PARA CRIAR USUARIOS
 
 class ConsumerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

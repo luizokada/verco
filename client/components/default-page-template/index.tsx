@@ -24,11 +24,9 @@ export default function DefaultPageTemplate({
       </Head>
 
       <body>
-        <Container fluid>
-          <Header />
-          {children}
-          <Footer />
-        </Container>
+        <Header />
+        {children}
+        <Footer />
       </body>
     </>
   );

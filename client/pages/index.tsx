@@ -10,14 +10,14 @@ function Home() {
       tabTitle="Início | veg.co"
       contentDescription="Produtos veganos ao melhor preço!"
     >
-      <div>
+      <>
         <HomeBar />
         <Carousel />
         <Divider title="Novidades" id="iha" />
         <DisplayItems />
         <Divider title="Mais Comprados" />
         <DisplayItems />
-      </div>
+      </>
     </DefaultPageTemplate>
   );
 }
