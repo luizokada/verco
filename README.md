@@ -7,5 +7,7 @@ Executar o client:
 `yarn dev`
 
 Para executar a api:
-`pip install -r requirements.txt`e
+`pip install -r requirements.txt`, 
+`python manage.py makemigrations`,
+`python manage.py migrate` e
 `python manage.py runserver`
